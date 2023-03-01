@@ -1,35 +1,36 @@
 t = int(input())
-for i in range(0,t):
-    template = ""
+for q in range(t):
+    found = False
+    index = 0
     a = input()
     b = input()
+    if(a[0] == b[0]):
+        print("YES")
+        print(f"{a[0]}*")
+        continue
+    elif(a[len(a)-1] ==b[len(b)-1]):
+        print("YES")
+        print(f"*{a[len(a)-1]}")
+        continue
+    for i in range(len(a)):
+        if found == True:
+            break
+        for j in range(len(b)):
+            if(a[i] == b[j]):
+                if(a[i:i+2] == b[j:j+2]):
+                    found = True
+                    index = i
+                    break
+    if found == False:
+        print("NO")
+    else:
+        print("YES")
+        print(f"*{a[index:index+2]}*")
     
-    p=0
-    temp = ""
-    for l in range(0,len(b)):
-        
-        if b[l] in a[p:]:
-            temp = temp + b[l]
-            template = template + b[l]
-            p+=1
-        else:
-            template = template + "*"
-            continue
-
-
-    ans = "";
-    for l in range(0,len(template)):
-
-        if template[l]!="*":
-            ans+=template[l]
-        else:
-            while (l+1<len(template) and template[l+1]!="*"):
-                if(template[l+1]!="*"):
-                    ans+="*"
-                l+=1
-                    
+    
+                     
             
 
 
-    print(ans)
+
      
